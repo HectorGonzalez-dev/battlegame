@@ -1,5 +1,4 @@
 import utils.file_manager as fm
+import display.menu as menu
 
-characters = fm.get_characters()
-
-print(characters)
+menu.display_menu("Bienvenido",("Nueva partida",),"Salir")
