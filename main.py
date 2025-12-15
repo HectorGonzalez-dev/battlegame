@@ -1,7 +1,8 @@
 import utils.file_manager as fm
 import display.menu as menu
 
-menu_principal=("Bienvenido",("Nueva Partida","Cargar Partida","Editor"),"Salir")
+menu_principal=("Perdido en el terminal",("Nueva Partida","Cargar Partida","Editor"),"Salir")
+menu_cargar_partida = ("Cargar Partida",None,"Volver")
 
 salir = False
 estado = "principal"
@@ -15,7 +16,7 @@ while not salir:
             print()
 
         elif opc == 2: # Cargar Partida
-            print()
+            estado = "cargar_partida"
 
         elif opc == 3: # Editor
             print()
@@ -23,3 +24,8 @@ while not salir:
         else: # Salir
             estado = ""
             salir = True
+
+    while estado == "cargar_partida":
+        saves = fm.get_data("data/saves.json")
+        savesKeys = list(saves.keys())
+        opc = menu.get_dyn_menu(menu_cargar_partida[0],savesKeys,menu_cargar_partida[2],100)
