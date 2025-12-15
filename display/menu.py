@@ -31,3 +31,18 @@ def get_menu(header,options,exit):
         except ValueError:
             print("Debes introducir un número entero".center(43, "-"))
             input("Pulsa enter para continuar\n")
+
+def set_name():
+    while True:
+        try:
+            nombre = input("Nombre del pj (20 caracteres max): ").strip()
+            nombre_solo_letras = nombre.replace(" ","")
+            if nombre.count("  ") == 0 and len(nombre) <= 20 and nombre_solo_letras.isalpha() == True:
+                return nombre
+            else:
+                if nombre.count("  ") > 0:
+                    print("El nombre no puede tener 2 espacios seguidos")
+                if len(nombre) > 20:
+                    print("El nombre es demasiado largo")
+                if nombre_solo_letras.isalpha() == False:
+                    print("El nombre solo puede contener letras")

@@ -12,7 +12,7 @@ while not salir:
         opc = menu.get_menu(menu_principal[0],menu_principal[1],menu_principal[2])
 
         if opc == 1: # Nueva Partida
-            print()
+            estado = "nueva_partida"
 
         elif opc == 2: # Cargar Partida
             print()
@@ -23,3 +23,6 @@ while not salir:
         else: # Salir
             estado = ""
             salir = True
+    
+    while estado == "nueva_partida":
+        
