@@ -32,23 +32,28 @@ def get_menu(header,options,exit):
             print("Debes introducir un número entero".center(width+2, "-"))
             input("Pulsa enter para continuar\n")
 
-def get_dyn_menu(header,options,exit,width,*extras):
-    cabecera = "+" + "".center(width,"=") + "+\n" +\
-               "|" + "".center(width," ") + "|\n" +\
-               "|" + header.center(width," ") + "|\n" +\
-               "|" + "".center(width," ") + "|\n" +\
-               "|" + "".center(width,"-") + "|\n" +\
-               "|" + "".center(width," ") + "|\n"
+def get_dyn_menu(header,options,exit,width,extras=[]):
+    extraWidth = 0
+    print(extras)
+    for parametro in extras:
+        extraWidth += parametro[0]
+    cabecera = "+" + "".center(width+extraWidth,"=") + "+\n" +\
+               "|" + "".center(width+extraWidth," ") + "|\n" +\
+               "|" + header.center(width+extraWidth," ") + "|\n" +\
+               "|" + "".center(width+extraWidth," ") + "|\n" +\
+               "|" + "".center(width+extraWidth,"-") + "|\n" +\
+               "|" + "".center(width+extraWidth," ") + "|\n"
     opciones = ""
     if not len(options):
-        opciones += "|" + "   No hay opciones disponibles".ljust(width," ") + "|\n"
+        opciones += "|" + "   No hay opciones disponibles".ljust(width+extraWidth," ") + "|\n"
     else:
+        # IMPLEMENTAR LOS PARAMETROS EXTRA <------------------------------------------------
         for i in range(len(options)):
             opciones += "|" + ("   [{}]  {}".format(i+1,options[i])).ljust(width," ") + "|\n"
-    opciones += "|" + "".center(width," ") + "|\n" +\
-                "|" + ("   [0]  {}".format(exit)).ljust(width," ") + "|\n" +\
-                "|" + "".center(width," ") + "|\n" +\
-                "+" + "".center(width,"=") + "+\n\n"
+    opciones += "|" + "".center(width+extraWidth," ") + "|\n" +\
+                "|" + ("   [0]  {}".format(exit)).ljust(width+extraWidth," ") + "|\n" +\
+                "|" + "".center(width+extraWidth," ") + "|\n" +\
+                "+" + "".center(width+extraWidth,"=") + "+\n\n"
 
     while True:
         try:
