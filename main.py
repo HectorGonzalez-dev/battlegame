@@ -29,8 +29,7 @@ while not salir:
     while estado == "cargar_partida":
         saves = fileman.get_data("data/saves.json")
         characters = fileman.get_data("data/characters.json")
-        savesKeys = listman.bubble_sort(list(saves.keys()))
-        print(savesKeys)
+        savesKeys = listman.bubble_sort_dict(saves)
         nombres = []
         for key in savesKeys:
             nombres.append(characters[saves[key]["character"]]["name"])
