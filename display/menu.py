@@ -36,7 +36,7 @@ def get_menu(header,options,exit,width,extras=[]):
     opciones += "|" + "".center(width+extraWidth," ") + "|\n" +\
                 "|" + ("   [0]  {}".format(exit)).ljust(width+extraWidth," ") + "|\n" +\
                 "|" + "".center(width+extraWidth," ") + "|\n" +\
-                "+" + "".center(width+extraWidth,"=") + "+\n\n"
+                "+" + "".center(width+extraWidth,"=") + "+\n"
 
     while True:
         try:
@@ -86,7 +86,7 @@ def get_dyn_menu(header,options,exit,width,extras=[]):
     opciones += "|" + "".center(width+extraWidth," ") + "|\n" +\
                 "|" + ("   [0]  {}".format(exit)).ljust(width+extraWidth," ") + "|\n" +\
                 "|" + "".center(width+extraWidth," ") + "|\n" +\
-                "+" + "".center(width+extraWidth,"=") + "+\n\n"
+                "+" + "".center(width+extraWidth,"=") + "+\n"
 
     while True:
         try:
@@ -101,4 +101,40 @@ def get_dyn_menu(header,options,exit,width,extras=[]):
 
         except ValueError:
             print("Debes introducir un número entero".center(width+2+extraWidth, "-"))
+            input("Pulsa enter para continuar\n")
+
+def display_battle_menu(current_enemies,current_player,option_list):
+    width = 50
+    cabecera = "+" + "".center(width,"=") + "+\n" +\
+               "|" + "".center(width," ") + "|\n" +\
+               "|" + "BATALLA EN CURSO".center(width," ") + "|\n" +\
+               "|" + "".center(width," ") + "|\n" +\
+               "|" + "".center(width,"-") + "|\n" +\
+               "|" + "".center(width," ") + "|\n"
+    cuerpo = "|" + "   Enemigos:".ljust(width," ") + "|\n"
+    for enemy in current_enemies:
+        cuerpo += "|" + ("   {} [Vida: {}/{}]".format(enemy["name"],enemy["current_health"],enemy["health"])).ljust(width," ") + "|\n"
+    cuerpo += "|" + "".center(width," ") + "|\n" +\
+              "|" + "   Jugador:".ljust(width," ") + "|\n" +\
+              "|" + ("   {} [Vida: {}/{}]".format(current_player["name"],current_player["current_health"],current_player["health"])).ljust(width," ") + "|\n" +\
+              "|" + "".center(width," ") + "|\n" +\
+              "|" + "".center(width,"-") + "|\n"
+    opciones = "|" + "".center(width," ") + "|\n"
+    for i in range(len(option_list)):
+        opciones += "|" + ("   [{}]  {}".format(i+1,option_list[i])).ljust(width," ") + "|\n"
+    opciones += "|" + "".center(width," ") + "|\n" + "+" + "".center(width,"=") + "+\n"
+
+    while True:
+        try:
+            print(cabecera+cuerpo+opciones)
+            opc = int(input("Selecciona una opción: "))
+
+            if opc in range(0, len(option_list)+1):
+                return opc
+            else:
+                print("Opción fuera del rango".center(width+2, "-"))
+                input("Pulsa enter para continuar\n")
+
+        except ValueError:
+            print("Debes introducir un número entero".center(width+2, "-"))
             input("Pulsa enter para continuar\n")

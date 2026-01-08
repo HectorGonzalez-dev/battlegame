@@ -1,6 +1,6 @@
 {
     "E1": {"name": "Slime", "health": 5, "attack": 2, "defense": 1, "speed": 3, "level": 1, "exp": 0,
-              "energy_type": "none", "status": [], "enemy_type": "monster", "skills": [],
+              "energy_type": "none", "current_health": 5, "status": [], "enemy_type": "monster", "skills": [],
               "moves":[]},
     "E2": {"name": "Goblin", "health": 10, "attack": 4, "defense": 4, "speed": 4, "level": 1, "exp": 0,
               "energy_type": "stamina", "status": [], "enemy_type": "monster", "skills": [],

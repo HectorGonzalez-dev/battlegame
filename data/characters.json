@@ -1,6 +1,6 @@
 {
     "P1": {"name": "Dummy", "health": 10, "attack": 5, "defense": 5, "speed": 5, "level": 1, "exp": 0,
-            "energy_type": "stamina", "status": [], "skills": [],
+            "energy_type": "stamina", "current_health" : 10, "status": [], "skills": [],
             "moves": [],
             "inventory": {
                 "head": null,
