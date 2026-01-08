@@ -31,8 +31,6 @@ def get_menu(header,options,exit,width,extras=[]):
                                 parametros += " | "
                             else:
                                 parametros += "]"
-                            
-                    
                 opciones += parametros.ljust(extraWidth," ")
             opciones += "|\n"
     opciones += "|" + "".center(width+extraWidth," ") + "|\n" +\
