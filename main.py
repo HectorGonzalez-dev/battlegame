@@ -1,6 +1,7 @@
 import utils.file_manager as fileman
 import display.menu as menu
 import utils.list_manager as listman
+import utils.char_manager as char_manager
 
 menu_principal=("Perdido en el terminal",("Nueva Partida","Cargar Partida","Editor"),"Salir")
 menu_cargar_partida = ("Cargar Partida",None,"Volver")
@@ -8,6 +9,8 @@ menu_nueva_partida = ("Nueva Partida",("Nombre","Estadísticas","Tipo de energí
 
 salir = False
 estado = "principal"
+nombre = ""
+energia = ""
 
 while not salir:
 
@@ -38,6 +41,11 @@ while not salir:
 
         if opc == 0:
             estado = "principal"
-
     while estado == "nueva_partida":
-        opc = menu.get_menu(menu_nueva_partida[0],menu_nueva_partida[1],menu_nueva_partida[2],25,[45,[1,"Paco"],[2,[str(10),"ATK: "],[str(10),"DEF: "],[str(10),"HP: "],[str(10),"SPD: "]],[3,"Stamina"]])
+        opc = menu.get_menu(menu_nueva_partida[0],menu_nueva_partida[1],menu_nueva_partida[2],25,[45,[1,nombre],[2,[str(10),"ATK: "],[str(10),"DEF: "],[str(10),"HP: "],[str(10),"SPD: "]],[3,energia]])
+        if opc == 0: # Volver
+            estado = "principal"
+        elif opc == 1:
+            nombre = char_manager.nuevo_nombre()
+        elif opc == 3:
+            energia = char_manager.tipo_energia()
