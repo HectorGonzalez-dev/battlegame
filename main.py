@@ -27,5 +27,9 @@ while not salir:
 
     while estado == "cargar_partida":
         saves = fm.get_data("data/saves.json")
+        characters = fm.get_data("data/characters.json")
         savesKeys = list(saves.keys())
-        opc = menu.get_dyn_menu(menu_cargar_partida[0],savesKeys,menu_cargar_partida[2],50,[[50,"L"]])
+        nombres = []
+        for key in savesKeys:
+            nombres.append(characters[saves[key]["character"]]["name"])
+        opc = menu.get_dyn_menu(menu_cargar_partida[0],savesKeys,menu_cargar_partida[2],20,[[20,nombres]])
