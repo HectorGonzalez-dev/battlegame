@@ -20,9 +20,13 @@ def get_dyn_menu(header,options,exit,width,extras=[]):
                 parametros = "["
                 for j in range(len(extras)):
                     parametro = extras[j]
+                    if len(parametro) == 3:
+                        parametros += parametro[2]
                     parametros += parametro[1][i]
                     if j == len(extras) - 1:
                         parametros += "]"
+                    else:
+                        parametros += " | "
                 opciones += parametros.ljust(extraWidth," ")
             opciones += "|\n"
     opciones += "|" + "".center(width+extraWidth," ") + "|\n" +\
