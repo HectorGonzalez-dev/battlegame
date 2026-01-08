@@ -49,8 +49,10 @@ while not salir:
         enemies = fileman.get_data("data/enemies.json")
         current_enemies = [enemies["E1"].copy()]
         current_player = characters["P1"].copy()
-        menu.display_battle_menu(current_enemies,current_player,opciones_batalla)
-        input()
+        opc = menu.display_battle_menu(current_enemies,current_player,opciones_batalla)
+        
+        if opc == 1: # Atacar
+            print()
 
     while estado == "nueva_partida":
         opc = menu.get_menu(menu_nueva_partida[0],menu_nueva_partida[1],menu_nueva_partida[2],25,[45,[1,"Paco"],[2,[str(10),"ATK: "],[str(10),"DEF: "],[str(10),"HP: "],[str(10),"SPD: "]],[3,"Stamina"]])
